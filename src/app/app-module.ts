@@ -3,10 +3,14 @@ import { BrowserModule, provideClientHydration, withEventReplay } from '@angular
 
 import { AppRoutingModule } from './app-routing-module';
 import { App } from './app';
+import { Login } from './features/auth/pages/login/login';
+import { Register } from './features/auth/pages/register/register';
 
 @NgModule({
   declarations: [
-    App
+    App,
+    Login,
+    Register
   ],
   imports: [
     BrowserModule,
