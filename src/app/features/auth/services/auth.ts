@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable, tap } from 'rxjs';
+import { BehaviorSubject, Observable, tap, timeout } from 'rxjs';
 
 // Interfaces para los tipos de datos
 export interface User {
@@ -10,7 +10,6 @@ export interface User {
   enabled: boolean;
   role: string;
   createdAt: string;
-  updatedAt: string;
 }
 
 export interface LoginResponse extends User {
@@ -42,12 +41,14 @@ export class AuthService {
     this.loadStoredUser();
   }
 
-  // URL base de tu API - usando proxy para evitar CORS
-  private apiUrl = '/api/v1'; // Proxy redirige a http://localhost:8080
+  private apiUrl = '/api/v1'; 
 
   // Método de registro
   register(registerData: RegisterRequest): Observable<User> {
-    return this.http.post<User>(`${this.apiUrl}/auth/register`, registerData);
+    return this.http.post<User>(`${this.apiUrl}/auth/register`, registerData)
+      .pipe(
+        timeout(1000)
+      );
   }
 
   // Método de login

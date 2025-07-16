@@ -65,7 +65,7 @@ export class Login implements OnInit {
   getErrorMessage(fieldName: string): string {
     const field = this.loginForm.get(fieldName);
     if (field?.hasError('required')) {
-      return `${fieldName} es requerido`;
+      return `El campo: ${fieldName}, es requerido`;
     }
     if (field?.hasError('minlength')) {
       const minLength = field.getError('minlength').requiredLength;

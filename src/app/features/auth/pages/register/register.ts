@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth';
+import { timeout } from 'rxjs/operators';
 
 @Component({
   selector: 'app-register',
@@ -67,8 +68,11 @@ export class Register implements OnInit {
           }, 2000);
         },
         error: (error) => {
-          console.error('Error en registro:', error);
-          this.errorMessage = error.error?.message || 'Error al registrar usuario';
+          if (error.name === 'TimeoutError') {
+            this.errorMessage = 'No se pudo conectar con el servidor. Intenta más tarde.';
+          } else {
+            this.errorMessage = error.error?.message || 'Error al registrar usuario';
+          }
           this.loading = false;
         },
         complete: () => {
@@ -91,7 +95,7 @@ export class Register implements OnInit {
     const field = this.registerForm.get(fieldName);
     
     if (field?.hasError('required')) {
-      return `${fieldName} es requerido`;
+      return `El campo: ${fieldName}, es requerido`;
     }
     if (field?.hasError('minlength')) {
       const minLength = field.getError('minlength').requiredLength;

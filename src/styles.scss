@@ -1,4 +1,368 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+/* Importar fuente Cartoonist Hand */
+@import url('https://fonts.googleapis.com/css2?family=Cartoonist+Hand:wght@400;500;600;700&display=swap');
+
+/* Paleta de colores HUD estandarizada */
+:root {
+  --hud-light: #E8E0C8;
+  --hud-beige: #B7AA91;
+  --hud-green: #3ED439;
+  --hud-cyan: #2FBEB5;
+  --hud-orange: #DB7417;
+  --hud-dark-gray: #7A7165;
+  --hud-almost-black: #2D2821;
+  --hud-black: #050404;
+  --hud-accent: #FF9800;
+  --hud-link-hover: #FFD966;
+  --hud-error: #FF9800;
+}
+
+/* Estilos globales */
+html, body { 
+  height: 100%; 
+  font-family: 'Cartoonist Hand', cursive;
+  background-color: var(--hud-light);
+  color: var(--hud-almost-black);
+}
+
+body { 
+  margin: 0; 
+  font-family: 'Cartoonist Hand', cursive;
+  line-height: 1.6;
+}
+
+/* Clases utilitarias para colores HUD */
+/* Eliminar magenta e indigo de las utilidades */
+.hud-light { background-color: var(--hud-light); }
+.hud-beige { background-color: var(--hud-beige); }
+.hud-green { background-color: var(--hud-green); }
+.hud-cyan { background-color: var(--hud-cyan); }
+.hud-orange { background-color: var(--hud-orange); }
+.hud-dark-gray { background-color: var(--hud-dark-gray); }
+.hud-almost-black { background-color: var(--hud-almost-black); }
+.hud-black { background-color: var(--hud-black); }
+
+/* Clases para texto */
+.text-hud-light { color: var(--hud-light); }
+.text-hud-beige { color: var(--hud-beige); }
+.text-hud-green { color: var(--hud-green); }
+.text-hud-cyan { color: var(--hud-cyan); }
+.text-hud-orange { color: var(--hud-orange); }
+.text-hud-dark-gray { color: var(--hud-dark-gray); }
+.text-hud-almost-black { color: var(--hud-almost-black); }
+.text-hud-black { color: var(--hud-black); }
+
+/* Estilos para botones */
+/* Botones estandarizados */
+.btn-primary {
+  background-color: var(--hud-orange);
+  color: white;
+  border: 3px solid var(--hud-black);
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-family: 'Cartoonist Hand', cursive;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 0 var(--hud-black);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.btn-primary:hover {
+  background-color: var(--hud-accent);
+  color: var(--hud-almost-black);
+  border-color: var(--hud-accent);
+}
+
+.btn-primary:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 var(--hud-black);
+}
+
+.btn-secondary {
+  background-color: var(--hud-beige);
+  color: var(--hud-almost-black);
+  border: 3px solid var(--hud-black);
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-family: 'Cartoonist Hand', cursive;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 0 var(--hud-black);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.btn-secondary:hover {
+  background-color: var(--hud-cyan);
+  color: var(--hud-almost-black);
+  border-color: var(--hud-cyan);
+}
+
+.btn-secondary:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 var(--hud-black);
+}
+
+/* Estilos para formularios */
+.form-control {
+  background-color: var(--hud-light);
+  border: 3px solid var(--hud-black);
+  border-radius: 8px;
+  padding: 15px;
+  font-family: 'Cartoonist Hand', cursive;
+  font-size: 16px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  color: var(--hud-almost-black);
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: var(--hud-cyan);
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.1), 0 0 0 3px rgba(47, 190, 181, 0.2);
+  background-color: white;
+}
+
+/* Inputs y errores */
+input, .form-control {
+  border: 3px solid var(--hud-black);
+  border-radius: 10px;
+  background-color: var(--hud-light);
+  color: var(--hud-almost-black);
+  font-family: 'Cartoonist Hand', cursive;
+  font-size: 16px;
+  font-weight: 500;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+input:focus, .form-control:focus {
+  border-color: var(--hud-accent);
+  box-shadow: 0 0 0 2px #FF980044;
+  background-color: white;
+}
+input.invalid, .form-control.invalid {
+  border-color: var(--hud-error);
+  box-shadow: 0 0 0 2px #FF980044;
+}
+
+/* Mensajes de error debajo del input */
+.error-message {
+  color: var(--hud-error) !important;
+  font-weight: 700;
+  font-size: 14px;
+  margin-top: 6px;
+  font-family: 'Cartoonist Hand', cursive;
+  background: none;
+  border: none;
+  box-shadow: none;
+}
+
+/* Estilos para cards */
+.card {
+  background-color: var(--hud-light);
+  border: 3px solid var(--hud-black);
+  border-radius: 12px;
+  box-shadow: 0 6px 0 var(--hud-black);
+  padding: 25px;
+  margin: 15px 0;
+  position: relative;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, var(--hud-cyan), var(--hud-magenta));
+  border-radius: 14px;
+  z-index: -1;
+}
+
+/* Estilos para headers */
+.header {
+  background-color: var(--hud-beige);
+  color: var(--hud-almost-black);
+  padding: 20px;
+  border: 3px solid var(--hud-black);
+  border-radius: 12px;
+  box-shadow: 0 4px 0 var(--hud-black);
+  position: relative;
+}
+
+.header::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, var(--hud-orange), var(--hud-green));
+  border-radius: 14px;
+  z-index: -1;
+}
+
+/* Estilos para navegación */
+.nav {
+  background-color: var(--hud-indigo);
+  color: white;
+  padding: 15px 20px;
+  border: 3px solid var(--hud-black);
+  border-radius: 8px;
+  box-shadow: 0 4px 0 var(--hud-black);
+}
+
+/* Estilos para enlaces */
+a {
+  color: var(--hud-orange);
+  font-weight: 700;
+  text-decoration: none;
+  border-bottom: 2px dotted var(--hud-orange);
+  transition: color 0.2s, border-color 0.2s;
+}
+a:hover {
+  color: var(--hud-link-hover);
+  border-bottom: 2px solid var(--hud-link-hover);
+  background: none;
+}
+
+/* Links estilo Dofus retro naranja */
+a {
+  color: var(--hud-orange);
+  font-weight: 700;
+  text-decoration: none;
+  border-bottom: 2px dotted var(--hud-orange);
+  transition: color 0.2s, border-color 0.2s;
+}
+a:hover {
+  color: var(--hud-link-hover);
+  border-bottom: 2px solid var(--hud-link-hover);
+  background: none;
+}
+
+/* Títulos grandes con franja horizontal centrada */
+h1, h2 {
+  display: block;
+  width: 100%;
+  background: var(--hud-beige);
+  color: var(--hud-light);
+  font-size: 2.2rem;
+  font-weight: 900;
+  letter-spacing: 1px;
+  border-radius: 8px 8px 12px 12px;
+  padding: 14px 0;
+  margin-bottom: 24px;
+  margin-top: 0;
+  text-align: center;
+  font-family: 'Cartoonist Hand', cursive;
+  box-shadow: none;
+  border: none;
+  text-shadow: none;
+  position: relative;
+}
+h1::after, h2::after {
+  content: '';
+  display: block;
+  width: 80%;
+  height: 4px;
+  background: var(--hud-dark-gray);
+  border-radius: 0 0 8px 8px;
+  margin: 10px auto 0 auto;
+}
+
+/* Estilos para mensajes */
+.message-success {
+  background-color: var(--hud-green);
+  color: var(--hud-black);
+  padding: 15px 20px;
+  border: 3px solid var(--hud-black);
+  border-radius: 8px;
+  margin: 15px 0;
+  font-family: 'Cartoonist Hand', cursive;
+  font-weight: 600;
+  box-shadow: 0 4px 0 var(--hud-black);
+}
+
+.message-error {
+  background-color: var(--hud-magenta);
+  color: white;
+  padding: 15px 20px;
+  border: 3px solid var(--hud-black);
+  border-radius: 8px;
+  margin: 15px 0;
+  font-family: 'Cartoonist Hand', cursive;
+  font-weight: 600;
+  box-shadow: 0 4px 0 var(--hud-black);
+}
+
+/* Estilos para tablas */
+.table {
+  background-color: var(--hud-light);
+  border: 3px solid var(--hud-black);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 0 var(--hud-black);
+}
+
+.table th {
+  background-color: var(--hud-beige);
+  color: var(--hud-almost-black);
+  padding: 15px;
+  font-weight: 600;
+  font-family: 'Cartoonist Hand', cursive;
+  border-bottom: 3px solid var(--hud-black);
+}
+
+.table td {
+  padding: 12px 15px;
+  border-bottom: 2px solid var(--hud-beige);
+  font-family: 'Cartoonist Hand', cursive;
+  font-weight: 500;
+}
+
+.main-title {
+  display: block;
+  width: 100%;
+  background: var(--hud-beige);
+  color: var(--hud-light);
+  font-size: 2.8rem;
+  font-weight: 900;
+  letter-spacing: 2px;
+  border-radius: 0;
+  padding: 22px 0 18px 0;
+  margin-bottom: 28px;
+  margin-top: 0;
+  text-align: center;
+  font-family: 'Cartoonist Hand', cursive;
+  box-shadow: none;
+  border: none;
+  text-shadow: none;
+  position: relative;
+}
+.main-title::after {
+  content: '';
+  display: block;
+  width: 90%;
+  height: 5px;
+  background: var(--hud-dark-gray);
+  border-radius: 0 0 8px 8px;
+  margin: 12px auto 0 auto;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .card {
+    margin: 10px;
+    padding: 15px;
+  }
+  
+  .btn-primary, .btn-secondary {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+}
