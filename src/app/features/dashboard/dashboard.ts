@@ -73,7 +73,7 @@ import { FormatDataService } from '../../shared/services/format-data.service';
       margin-bottom: 28px;
       margin-top: 0;
       text-align: center;
-      font-family: 'Cartoonist Hand', cursive;
+      font-family: 'Patrick Hand', cursive;
       box-shadow: none;
       border: none;
       position: relative;

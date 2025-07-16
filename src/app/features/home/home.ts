@@ -94,7 +94,7 @@ import { Router } from '@angular/router';
       margin-bottom: 28px;
       margin-top: 0;
       text-align: center;
-      font-family: 'Cartoonist Hand', cursive;
+      font-family: 'Patrick Hand', cursive;
       box-shadow: none;
       border: none;
       position: relative;
@@ -120,7 +120,7 @@ import { Router } from '@angular/router';
       font-size: 18px;
       margin: 0;
       font-weight: 500;
-      font-family: 'Cartoonist Hand', cursive;
+      font-family: 'Patrick Hand', cursive;
     }
 
     .home-actions {
@@ -136,7 +136,7 @@ import { Router } from '@angular/router';
       border-radius: 10px;
       background: var(--hud-light);
       color: var(--hud-almost-orange);
-      font-family: 'Cartoonist Hand', cursive;
+      font-family: 'Patrick Hand', cursive;
       font-weight: 700;
       font-size: 16px;
       text-transform: uppercase;
@@ -210,7 +210,7 @@ import { Router } from '@angular/router';
       color: var(--hud-dark-gray);
       font-size: 16px;
       font-weight: 700;
-      font-family: 'Cartoonist Hand', cursive;
+      font-family: 'Patrick Hand', cursive;
       text-transform: uppercase;
       letter-spacing: 1px;
     }
@@ -226,7 +226,7 @@ import { Router } from '@angular/router';
       font-size: 14px;
       margin: 0;
       font-weight: 500;
-      font-family: 'Cartoonist Hand', cursive;
+      font-family: 'Patrick Hand', cursive;
     }
 
     @keyframes fadeInUp {
